@@ -7,5 +7,7 @@
 /web/index.php
 /web/install.php
 /web/upgrade.php
+/web/vendor
 
 /vendor
+    
