@@ -1,0 +1,59 @@
+# This is the Docker Compose entry point for this project.
+# Services listed in this file will automatically be built and started when you bring
+# the project up.
+version: "3.7"
+services:
+  nginx:
+    image: nginx:alpine
+    ports:
+      - 8080:80
+    depends_on:
+      - elgg
+    volumes:
+      - ./services/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro,cached
+      - ./services/elgg/web:/var/www/html/web:cached
+      - type: volume
+        source: fs-data
+        target: /var/data/elgg-data
+        read_only: true
+  elgg:
+    build:
+      context: ./services/elgg
+    depends_on:
+      - mysql
+    command:
+      - sh
+      - -c
+      - >-
+        chmod -R 0777 /var/data/elgg-data
+
+        composer install --ignore-platform-reqs
+
+
+
+        exec php-fpm
+    volumes:
+      - ./services/elgg:/var/www/html:cached
+      - type: volume
+        source: fs-data
+        target: /var/data/elgg-data
+  mysql:
+    image: mysql:5.7
+    environment:
+      MYSQL_DATABASE: web
+      MYSQL_USER: web
+      MYSQL_PASSWORD: web
+      MYSQL_RANDOM_ROOT_PASSWORD: "yes"
+    ports:
+      - 13306:3306
+    volumes:
+      - type: volume
+        source: mysql-data
+        target: /var/lib/mysql
+  mailhog:
+    image: mailhog/mailhog
+    ports:
+      - 8025:8025
+volumes:
+  ? fs-data
+  ? mysql-data

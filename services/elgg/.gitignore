@@ -1,0 +1,11 @@
+.*
+!.gitignore
+/elgg-config/settings.php
+
+/mod
+
+/web/index.php
+/web/install.php
+/web/upgrade.php
+
+/vendor
