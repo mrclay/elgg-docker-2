@@ -24,26 +24,22 @@ Browse to http://localhost:8080/install.php
 ### Using composer / elgg-cli
 
 ```
-docker-compose exec elgg composer <COMMAND>
-docker-compose exec elgg composer show
+docker-compose exec elgg-starter composer <COMMAND>
+docker-compose exec elgg-starter composer show
 
-docker-compose exec elgg vendor/elgg/elgg/elgg-cli <COMMAND>
-docker-compose exec elgg vendor/elgg/elgg/elgg-cli plugins:list
+docker-compose exec elgg-starter vendor/elgg/elgg/elgg-cli <COMMAND>
+docker-compose exec elgg-starter vendor/elgg/elgg/elgg-cli plugins:list
 ```
 
 ### Browse elgg-data
 
 ```
 # Quick look
-docker-compose exec -w /var/data/elgg-data elgg tree
+docker-compose exec -w /var/data/elgg-data elgg-starter tree
 
 # Browse
-docker-compose exec -w /var/data/elgg-data elgg bash
+docker-compose exec -w /var/data/elgg-data elgg-starter bash
 ```
-
-### Viewing mail sent
-
-http://localhost:8025/
 
 ## Elgg/Elgg core install
 
@@ -54,3 +50,17 @@ port 8081 serves the Elgg directory directly. Hence /vendor is public
 ```
 ./core-install.sh
 ```
+
+### Using composer / elgg-cli and elgg-data
+
+```
+docker-compose exec -w /var/www/html/Elgg elgg-core composer show
+
+docker-compose exec elgg-core php Elgg/elgg-cli plugins:list
+
+docker-compose exec -w /var/data/elgg-data elgg-core tree
+```
+
+## Viewing mail sent
+
+http://localhost:8025/
