@@ -6,7 +6,8 @@
 	"prefer-stable": true,
 	"minimum-stability": "dev",
 	"require": {
-		"elgg/elgg": "3.*"
+		"elgg/elgg": "3.*",
+		"mrclay/elgg-http-combiner": "^1.0"
 	},
 	"require-dev": {
 		"phpunit/phpunit": "~8.5"

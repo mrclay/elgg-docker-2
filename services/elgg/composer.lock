@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a386ef311aa0fd7d449785a76861acd6",
+    "content-hash": "544a1419a3c44fb8f36284b17c59297e",
     "packages": [
         {
             "name": "bower-asset/fontawesome",
@@ -1871,6 +1871,52 @@
                 }
             ],
             "time": "2020-12-14T12:56:38+00:00"
+        },
+        {
+            "name": "mrclay/elgg-http-combiner",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mrclay/Elgg-mrclay_combiner.git",
+                "reference": "b3a2fc4da664212b4d7a5c2dd679e1144350ef4a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mrclay/Elgg-mrclay_combiner/zipball/b3a2fc4da664212b4d7a5c2dd679e1144350ef4a",
+                "reference": "b3a2fc4da664212b4d7a5c2dd679e1144350ef4a",
+                "shasum": ""
+            },
+            "require-dev": {
+                "composer/installers": "1.*"
+            },
+            "type": "elgg-plugin",
+            "extra": {
+                "installer-name": "mrclay_combiner"
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Steve Clay",
+                    "email": "steve@mrclay.org"
+                }
+            ],
+            "description": "Reduces HTTP requests by merging files and AMD modules",
+            "homepage": "http://www.mrclay.org/",
+            "keywords": [
+                "amd",
+                "elgg",
+                "http",
+                "plugin",
+                "webperf"
+            ],
+            "support": {
+                "issues": "https://github.com/mrclay/Elgg-mrclay_combiner/issues",
+                "source": "https://github.com/mrclay/Elgg-mrclay_combiner/tree/master"
+            },
+            "time": "2016-10-04T00:01:03+00:00"
         },
         {
             "name": "mrclay/minify",
@@ -6233,7 +6279,7 @@
     "platform": [],
     "platform-dev": [],
     "platform-overrides": {
-        "php": "7.2"
+        "php": "7.4"
     },
     "plugin-api-version": "2.0.0"
 }
