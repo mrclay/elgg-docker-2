@@ -6,7 +6,7 @@ set -exuo pipefail
 docker-compose up -d
 
 # Wait
-docker-compose exec elgg /wait
+docker-compose exec elgg-starter /wait
 
 # Installer
-docker-compose exec elgg php cli-install.php
+docker-compose exec elgg-starter php cli-install.php

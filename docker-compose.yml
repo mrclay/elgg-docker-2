@@ -3,18 +3,18 @@
 # the project up.
 version: "3.7"
 services:
-  nginx:
+  nginx-starter:
     image: nginx:alpine
     ports:
       - 8080:80
     depends_on:
-      - elgg
+      - elgg-starter
     volumes:
-      - ./services/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro,cached
-      - ./services/elgg/web:/var/www/html/web:cached
-  elgg:
+      - ./services/nginx-starter/default.conf:/etc/nginx/conf.d/default.conf:ro,cached
+      - ./services/elgg-starter/web:/var/www/html/web:cached
+  elgg-starter:
     build:
-      context: ./services/elgg
+      context: ./services/elgg-starter
     depends_on:
       - mysql
     command:
@@ -36,13 +36,14 @@ services:
       WAIT_SLEEP_INTERVAL: 3
       ELGG_WWWROOT: http://localhost:8080/
       ELGG_DATAROOT: /var/data/elgg-data/
+      ELGG_DB_PREFIX: elgg_starter_
       ELGG_ADMIN_USER: admin
       ELGG_ADMIN_EMAIL: admin@example.com
       ELGG_ADMIN_PASSWORD: Adm1npwd
     volumes:
-      - ./services/elgg:/var/www/html:cached
+      - ./services/elgg-starter:/var/www/html:cached
       - type: volume
-        source: fs-data
+        source: fs-data-starter
         target: /var/data/elgg-data
   mysql:
     image: mysql:5.7
@@ -62,5 +63,5 @@ services:
     ports:
       - 8025:8025
 volumes:
-  ? fs-data
+  ? fs-data-starter
   ? mysql-data
