@@ -93,7 +93,7 @@ $CONFIG->dbport = '3306';
  *
  * @global string $CONFIG->dbprefix
  */
-$CONFIG->dbprefix = 'elgg_';
+$CONFIG->dbprefix = 'elgg_starter_';
 
 /**
  * The database encoding.
