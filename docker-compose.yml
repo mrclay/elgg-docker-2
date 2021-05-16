@@ -26,6 +26,18 @@ services:
         composer install --ignore-platform-reqs
 
         exec php-fpm
+    environment:
+      MYSQL_DATABASE: web
+      MYSQL_USER: web
+      MYSQL_PASSWORD: web
+      MYSQL_HOST: mysql
+      WAIT_HOSTS: mysql:3306
+      WAIT_SLEEP_INTERVAL: 3
+      ELGG_WWWROOT: http://localhost:8080/
+      ELGG_DATAROOT: /var/data/elgg-data/
+      ELGG_ADMIN_USER: admin
+      ELGG_ADMIN_EMAIL: admin@example.com
+      ELGG_ADMIN_PASSWORD: Adm1npwd
     volumes:
       - ./services/elgg:/var/www/html:cached
       - type: volume

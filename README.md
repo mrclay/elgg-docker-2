@@ -1,15 +1,20 @@
 # Elgg docker-compose Project
 
-## Install
+## Auto install
 
 ```
-docker-compose up -d && docker-compose logs -f
+./auto-install.sh
 ```
 
-Once the logs quiet down:
+Open http://localhost:8080/
 
-1. **ctrl+c** to detach from logger
-1. Browse to http://localhost:8080/install.php
+### Manual install
+
+```
+docker-compose up -d
+```
+
+Browse to http://localhost:8080/install.php
 
 ### Using composer / elgg-cli
 
@@ -30,3 +35,7 @@ docker-compose exec -w /var/data/elgg-data elgg tree
 # Browse
 docker-compose exec -w /var/data/elgg-data elgg bash
 ```
+
+### Viewing mail sent
+
+http://localhost:8025/
