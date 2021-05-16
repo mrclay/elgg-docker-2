@@ -32,6 +32,7 @@ services:
       MYSQL_PASSWORD: web
       MYSQL_HOST: mysql
       WAIT_HOSTS: mysql:3306
+      WAIT_PATHS: /var/www/html/vendor/autoload.php
       WAIT_SLEEP_INTERVAL: 3
       ELGG_WWWROOT: http://localhost:8080/
       ELGG_DATAROOT: /var/data/elgg-data/
