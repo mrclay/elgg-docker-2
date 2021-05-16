@@ -1,6 +1,7 @@
 .*
 !.gitignore
 /elgg-config/settings.php
+/cli-install.php
 
 /mod
 

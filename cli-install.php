@@ -14,7 +14,7 @@ $params = [
   'dbport' => getenv('MYSQL_PORT') ? : '3306',
 
   // site settings
-  'sitename' => 'Sample Elgg Site',
+  'sitename' => getenv('ELGG_SITE_NAME'),
   'siteemail' => 'fake@example.com',
   'wwwroot' => getenv('ELGG_WWWROOT'),
   'dataroot' => getenv('ELGG_DATAROOT'),
@@ -31,7 +31,7 @@ if (PHP_SAPI !== 'cli') {
   exit;
 }
 
-require_once __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . '/cli-autoload.php';
 
 $installer = new ElggInstaller();
 $installer->batchInstall($params);

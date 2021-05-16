@@ -1,0 +1,5 @@
+.*
+!.gitignore
+
+/Elgg
+/cli-install.php

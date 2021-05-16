@@ -2,6 +2,10 @@
 
 ## Auto install
 
+This installs Elgg into a new composer project so that port 8080 serves just the
+contents of the `services/elgg-starter/web` directory. Composer's `vendor` is not
+public.
+
 ```
 ./auto-install.sh
 ```
@@ -40,3 +44,13 @@ docker-compose exec -w /var/data/elgg-data elgg bash
 ### Viewing mail sent
 
 http://localhost:8025/
+
+## Elgg/Elgg core install
+
+This clones the Elgg repo into `services/elgg-core/Elgg` and installs it so
+port 8081 serves the Elgg directory directly. Hence /vendor is public
+(not recommended).
+
+```
+./core-install.sh
+```
