@@ -23,8 +23,6 @@ services:
       - >-
         chmod -R 0777 /var/data/elgg-data
 
-        composer install --ignore-platform-reqs
-
         exec php-fpm
     environment:
       MYSQL_DATABASE: web

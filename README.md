@@ -12,6 +12,7 @@ Open http://localhost:8080/
 
 ```
 docker-compose up -d
+docker-compose exec elgg-starter composer install --ignore-platform-reqs
 ```
 
 Browse to http://localhost:8080/install.php
