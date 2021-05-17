@@ -31,11 +31,14 @@ docker-compose exec starter vendor/elgg/elgg/elgg-cli <COMMAND>
 docker-compose exec starter vendor/elgg/elgg/elgg-cli plugins:list
 ```
 
-### Browse elgg-data
+### Accessing elgg-data
 
 ```
-# Quick look
+# Data tree
 docker-compose exec -w /var/data/elgg-data starter tree
+
+# Clear cache
+docker-compose exec -w /var/data/elgg-data starter rm -rf caches/*
 
 # Browse
 docker-compose exec -w /var/data/elgg-data starter bash
@@ -43,13 +46,15 @@ docker-compose exec -w /var/data/elgg-data starter bash
 
 ## Elgg/Elgg core install
 
-This clones the Elgg repo into `core/Elgg` and installs it so
-port 8081 serves the Elgg directory directly. Hence /vendor is public
-(not recommended).
+This clones the Elgg repo into `core/Elgg` and installs it so the Elgg
+directory is the document root (/vendor is public, not recommended).
 
 ```
 ./core-install.sh
 ```
+
+- http://localhost:8081/ - Elgg served by nginx
+- http://localhost:8082/ - Elgg served by apache
 
 ### Using composer / elgg-cli and elgg-data
 
@@ -58,7 +63,11 @@ docker-compose exec -w /var/www/html/Elgg core-nginx composer show
 
 docker-compose exec core-nginx php Elgg/elgg-cli plugins:list
 
+# Data tree
 docker-compose exec -w /var/data/elgg-data core-nginx tree
+
+# Clear cache
+docker-compose exec -w /var/data/elgg-data core-nginx rm -rf caches/*
 ```
 
 ## Viewing mail sent
