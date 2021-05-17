@@ -6,10 +6,10 @@ set -exuo pipefail
 docker-compose up -d
 
 # Composer install
-docker-compose exec elgg-starter composer install --ignore-platform-reqs
+docker-compose exec starter composer install --ignore-platform-reqs
 
 # Wait
-docker-compose exec elgg-starter /wait
+docker-compose exec starter /wait
 
 # Installer
-docker-compose exec elgg-starter php cli-install.php
+docker-compose exec starter php cli-install.php

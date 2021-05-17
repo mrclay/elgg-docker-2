@@ -9,15 +9,15 @@ services:
       - 8080:80
       - 8081:81
     depends_on:
-      - elgg-core
-      - elgg-starter
+      - core-nginx
+      - starter
     volumes:
       - ./services/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro,cached
-      - ./services/elgg-starter/web:/var/www/html/web-starter:cached
-      - ./services/elgg-core/Elgg:/var/www/html/Elgg:cached
-  elgg-core:
+      - ./services/starter/web:/var/www/html/web-starter:cached
+      - ./core/Elgg:/var/www/html/Elgg:cached
+  core-nginx:
     build:
-      context: ./services/elgg-core
+      context: ./services/core-nginx
     depends_on:
       - mysql
     command:
@@ -43,14 +43,15 @@ services:
       ELGG_ADMIN_EMAIL: admin@example.com
       ELGG_ADMIN_PASSWORD: Adm1npwd
     volumes:
-      - ./services/elgg-core:/var/www/html:cached
+      - ./services/core-nginx:/var/www/html:cached
+      - ./core/Elgg:/var/www/html/Elgg:cached
       - ./cli-install.php:/var/www/html/cli-install.php:cached
       - type: volume
         source: fs-data-core
         target: /var/data/elgg-data
-  elgg-starter:
+  starter:
     build:
-      context: ./services/elgg-starter
+      context: ./services/starter
     depends_on:
       - mysql
     command:
@@ -76,7 +77,7 @@ services:
       ELGG_ADMIN_EMAIL: admin@example.com
       ELGG_ADMIN_PASSWORD: Adm1npwd
     volumes:
-      - ./services/elgg-starter:/var/www/html:cached
+      - ./services/starter:/var/www/html:cached
       - ./cli-install.php:/var/www/html/cli-install.php:cached
       - type: volume
         source: fs-data-starter
