@@ -1,6 +1,6 @@
 # Mostly copied from Wordpress
 
-FROM php:8.0-fpm-alpine
+FROM php:8.0-fpm-alpine3.13
 
 # persistent dependencies
 RUN set -eux; \

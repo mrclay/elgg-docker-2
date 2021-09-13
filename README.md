@@ -10,7 +10,7 @@ public.
 ./auto-install.sh
 ```
 
-Open http://localhost:8080/
+Open http://localhost:8080/ and log in with `admin` / `Adm1npwd`
 
 ### Manual install
 
