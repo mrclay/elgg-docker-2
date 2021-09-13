@@ -13,8 +13,8 @@ services:
       - starter
     volumes:
       - ./services/nginx/default.conf:/etc/nginx/conf.d/default.conf:cached,ro
-      - ./services/starter/web:/var/www/html/web-starter:cached,ro
-      - ./core/Elgg:/var/www/html/Elgg:cached,ro
+      - ./services/starter/web:/var/www/html/web-starter:cached
+      - ./core/Elgg:/var/www/html/Elgg:cached
   core-nginx:
     build:
       context: ./services/core-nginx
@@ -43,9 +43,9 @@ services:
       ELGG_ADMIN_EMAIL: admin@example.com
       ELGG_ADMIN_PASSWORD: Adm1npwd
     volumes:
-      - ./services/core-nginx:/var/www/html:cached,ro
-      - ./core/Elgg:/var/www/html/Elgg:cached,ro
-      - ./cli-install.php:/var/www/html/cli-install.php:cached,ro
+      - ./services/core-nginx:/var/www/html:cached
+      - ./core/Elgg:/var/www/html/Elgg:cached
+      - ./cli-install.php:/var/www/html/cli-install.php:ro
       - type: volume
         source: fs-data-core
         target: /var/data/elgg-data
@@ -79,7 +79,7 @@ services:
       ELGG_ADMIN_EMAIL: admin@example.com
       ELGG_ADMIN_PASSWORD: Adm1npwd
     volumes:
-      - ./core/Elgg:/var/www/html:cached,ro
+      - ./core/Elgg:/var/www/html:cached
       - type: volume
         source: fs-data-core
         target: /var/data/elgg-data
@@ -111,8 +111,8 @@ services:
       ELGG_ADMIN_EMAIL: admin@example.com
       ELGG_ADMIN_PASSWORD: Adm1npwd
     volumes:
-      - ./services/starter:/var/www/html:cached,ro
-      - ./cli-install.php:/var/www/html/cli-install.php:cached,ro
+      - ./services/starter:/var/www/html:cached
+      - ./cli-install.php:/var/www/html/cli-install.php:ro
       - type: volume
         source: fs-data-starter
         target: /var/data/elgg-data

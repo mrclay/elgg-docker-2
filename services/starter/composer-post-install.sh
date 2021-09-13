@@ -7,6 +7,8 @@ mv index.php web/
 mv install.php web/
 mv upgrade.php web/
 
+cp web-vendor-autoload.php web/vendor/autoload.php
+
 # LOL thanks installer but nginx
 rm .htaccess
 
@@ -22,6 +24,6 @@ TMP=vendor/elgg/elgg/views/default/graphics
 mkdir -p "web/${TMP}"
 cp "${TMP}/elgg_logo.png" "web/${TMP}/"
 
-TMP=vendor/bower-asset/jquery/dist
+TMP=vendor/npm-asset/jquery/dist
 mkdir -p "web/${TMP}"
 cp "${TMP}/jquery.min.js" "web/${TMP}/"
