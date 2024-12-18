@@ -2,6 +2,8 @@
 
 set -exuo pipefail
 
+mkdir -p web/vendor
+
 # Composer copies these into root. We really need em in web.
 mv index.php web/
 mv install.php web/

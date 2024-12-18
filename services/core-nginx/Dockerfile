@@ -1,6 +1,6 @@
 # Mostly copied from Wordpress
 
-FROM php:8.0-fpm-alpine3.13
+FROM php:8.2-fpm-alpine3.21
 
 # persistent dependencies
 RUN set -eux; \
@@ -25,6 +25,7 @@ RUN set -ex; \
 		freetype-dev \
 		imagemagick-dev \
 		libjpeg-turbo-dev \
+		icu-dev \
 		libpng-dev \
 		libzip-dev \
 	; \
@@ -33,16 +34,19 @@ RUN set -ex; \
 		--with-freetype \
 		--with-jpeg \
 	; \
+    docker-php-ext-configure intl \
+    ; \
 	docker-php-ext-install -j "$(nproc)" \
 		bcmath \
 		exif \
 		gd \
+		intl \
 		mysqli \
 		pdo_mysql \
 		zip \
 	; \
-	pecl install imagick-3.5.0; \
-	docker-php-ext-enable imagick; \
+	pecl install imagick-3.7.0; \
+	docker-php-ext-enable imagick intl; \
 	rm -r /tmp/pear; \
 	\
 	runDeps="$( \
@@ -84,5 +88,5 @@ RUN { \
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 # Allow waiting for mysql
-ADD https://github.com/ufoscout/docker-compose-wait/releases/download/2.9.0/wait /wait
+ADD https://github.com/ufoscout/docker-compose-wait/releases/download/2.12.1/wait /wait
 RUN chmod +x /wait

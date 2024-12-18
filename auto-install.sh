@@ -3,13 +3,13 @@
 set -exuo pipefail
 
 # Build the containers
-docker-compose up -d
+docker compose up -d
 
 # Composer install
-docker-compose exec starter composer install --ignore-platform-reqs
+docker compose exec starter composer install --ignore-platform-reqs
 
 # Wait
-docker-compose exec starter /wait
+docker compose exec starter /wait
 
 # Installer
-docker-compose exec starter php cli-install.php
+docker compose exec starter php cli-install.php
